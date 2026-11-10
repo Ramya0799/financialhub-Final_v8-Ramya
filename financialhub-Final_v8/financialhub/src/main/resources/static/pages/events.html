@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <script src="/assets/js/theme.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Seminars | Mahesh Pai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        /* Reusing the gallery-section spacing */
+        .gallery-section { max-width: 1400px; margin: 0 auto 100px; padding: 0 5%; }
+        .section-header { margin-bottom: 40px; border-left: 4px solid var(--orange-accent, #FF6B00); padding-left: 20px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--text-primary); }
+    </style>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+    <main>
+        <section class="page-hero reveal">
+            <h1><span class="gradient-text">Events</span></h1>
+        </section>
+
+        <div style="margin-top: 80px;">
+            <!-- Target: Continuous Training -->
+            <section id="continuous-training" class="gallery-section reveal">
+                <div class="section-header">
+                    <h2>Continuous Training</h2>
+                    <p style="color:var(--text-secondary);">Upgrading skills at premier institutions.</p>
+                </div>
+                <!-- THIS IS THE ID THE JS NEEDS -->
+                <div class="image-grid" id="training-container"></div>
+            </section>
+
+            <!-- Target: Presentations -->
+            <section id="presentations" class="gallery-section reveal">
+                <div class="section-header">
+                    <h2>Presentations</h2>
+                    <p style="color:var(--text-secondary);">Keynote speeches and corporate seminars.</p>
+                </div>
+                <!-- THIS IS THE ID THE JS NEEDS -->
+                <div class="content-grid" id="presentations-container" style="padding: 0; margin: 0;"></div>
+            </section>
+
+            <!-- Target: Awards -->
+            <section id="awards" class="gallery-section reveal">
+                <div class="section-header">
+                    <h2>Awards & Recognitions</h2>
+                    <p style="color:var(--text-secondary);">Honoring decades of excellence.</p>
+                </div>
+                <!-- THIS IS THE ID THE JS NEEDS -->
+                <div class="content-grid" id="awards-container" style="padding: 0; margin-bottom: 40px;"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Lightbox for Image Viewing -->
+    <div class="lightbox" id="galleryLightbox">
+        <i class="fas fa-times lightbox-close" onclick="closeLightbox()"></i>
+        <img src="" alt="Fullscreen Image" class="lightbox-img" id="lightboxImage">
+    </div>
+
+    <div id="footer"></div>
+
+	<script src="/assets/js/common.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Lightbox Logic
+        const lightbox = document.getElementById('galleryLightbox');
+        const lightboxImg = document.getElementById('lightboxImage');
+        function openLightbox(element) { lightboxImg.src = element.querySelector('img').src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = 'auto'; setTimeout(() => lightboxImg.src = '', 300); }
+
+        document.addEventListener("componentsLoaded", () => {
+            fetch('/admin/api/events') 
+                .then(response => response.json())
+                .then(data => {
+                    // Separate by Category Folders
+                    const training = data.filter(e => e.category === 'Continuous Training');
+                    const presentations = data.filter(e => e.category === 'Presentations');
+                    const awards = data.filter(e => e.category === 'Awards');
+
+                    // Render Training (Image Grid Layout)
+                    renderGridItems(training, 'training-container');
+
+                    // Render Presentations (Card Layout)
+                    renderCardItems(presentations, 'presentations-container', 'event-details.html');
+
+                    // Render Awards (Card Layout)
+                    renderCardItems(awards, 'awards-container', 'event-details.html');
+                });
+        });
+
+        // Generates Square Image Grid HTML (For Training & Gallery)
+        function renderGridItems(items, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            if (items.length === 0) return container.innerHTML = '<p style="text-align:center; width:100%;">No items available.</p>';
+            
+            items.forEach(item => {
+                const imgUrl = item.imageUrl || item.fileUrl; // Supports both Event and Gallery API formats
+                container.innerHTML += `
+                    <div class="image-grid-item glass reveal active" onclick="openLightbox(this)">
+                        <img src="${imgUrl}" alt="${item.title}">
+                    </div>
+                `;
+            });
+        }
+
+        // Generates Article Cards (For Presentations & Awards)
+        function renderCardItems(items, containerId, targetPage) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            if (items.length === 0) return container.innerHTML = '<p style="text-align:center; width:100%;">No items available.</p>';
+
+            items.forEach(item => {
+                const excerpt = item.description ? item.description.substring(0, 110) + "..." : "";
+                container.innerHTML += `
+                    <div class="content-card reveal active">
+                        <div class="card-img-wrapper">
+                            <img src="${item.imageUrl}" alt="${item.title}">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">${item.title}</h3>
+                            <p class="card-excerpt">${excerpt}</p>
+                            <a href="/pages/${targetPage}?id=${item.id}" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    </script>
+    </body>
+</html>

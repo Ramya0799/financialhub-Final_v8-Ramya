@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <script src="/assets/js/theme.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insight Details | Vinod Desai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .details-container { max-width: 900px; margin: 120px auto 100px; padding: 0 5%; }
+        .details-header { margin-bottom: 40px; text-align: center; }
+        .details-title { font-size: 2.5rem; color: var(--text-primary); margin-bottom: 15px; }
+        .details-meta { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 30px; }
+        .details-image { width: 100%; max-height: 500px; object-fit: cover; border-radius: 16px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .details-content { font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); text-align: justify; }
+    </style>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+    <main class="details-container" id="content-area">
+        <p style="text-align:center;">Loading content...</p>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Get the ID from the URL (?id=3)
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+
+            if (!id) {
+                document.getElementById('content-area').innerHTML = "<h1>Article not found.</h1>";
+                return;
+            }
+
+            // Fetch all blogs, find the one with this ID, and render it
+            fetch('/admin/api/blogs')
+                .then(res => res.json())
+                .then(data => {
+                    const post = data.find(b => b.id == id);
+                    if (!post) {
+                        document.getElementById('content-area').innerHTML = "<h1>Article not found.</h1>";
+                        return;
+                    }
+
+                    const date = new Date(post.createdAt).toLocaleDateString();
+                    const imgUrl = post.imageUrl || "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80";
+
+                    document.getElementById('content-area').innerHTML = `
+                        <div class="details-header reveal active">
+                            <span style="background: var(--orange-accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;">${post.category || 'Insights'}</span>
+                            <h1 class="details-title" style="margin-top: 20px;">${post.title}</h1>
+                            <div class="details-meta">
+                                <span><i class="fas fa-user"></i> ${post.author || 'Mahesh Pai'}</span> | 
+                                <span><i class="fas fa-calendar-alt"></i> ${date}</span>
+                            </div>
+                        </div>
+                        <img src="${imgUrl}" class="details-image reveal active" alt="${post.title}">
+                        <div class="details-content reveal active">
+                            ${post.content}
+                        </div>
+                        <div style="margin-top: 50px; text-align: center;">
+                            <a href="/pages/blogs.html" class="btn-premium"><i class="fas fa-arrow-left"></i> Back to Insights</a>
+                        </div>
+                    `;
+                })
+                .catch(err => {
+                    document.getElementById('content-area').innerHTML = "<h1>Error loading article.</h1>";
+                });
+        });
+    </script>
+</body>
+</html>

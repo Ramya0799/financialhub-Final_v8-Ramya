@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+    <script src="/assets/js/theme.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR. VINOD INDRAPPA DESAI  Financial Planner | Premium Wealth Management</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<style>
+/* ==========================================================================
+           HOME PAGE SPECIFIC STYLES
+           ========================================================================== */
+
+/* --- 1. Premium Hero Section --- */
+.home-hero {
+	position: relative;
+	min-height: 90vh;
+	background: linear-gradient(135deg, #051320, #0a2342);
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	padding: 120px 5% 60px;
+	color: white;
+}
+
+.hero-bg-glow {
+	position: absolute;
+	width: 600px;
+	height: 600px;
+	background: radial-gradient(circle, rgba(0, 136, 255, 0.15) 0%,
+		transparent 70%);
+	top: 10%;
+	left: -10%;
+	z-index: 1;
+}
+
+.home-hero-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1400px;
+	margin: 0 auto;
+	width: 100%;
+	z-index: 2;
+	gap: 40px;
+}
+
+.hero-content {
+	flex: 1.2;
+}
+
+.hero-logo-text {
+	font-size: 1.5rem;
+	color: #0088ff;
+	font-weight: 700;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.hero-title {
+	font-size: clamp(2.5rem, 4vw, 4rem);
+	font-weight: 700;
+	line-height: 1.1;
+	margin-bottom: 30px;
+	background: linear-gradient(90deg, #ff6b00, #ffb347);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.hero-actions {
+	display: flex;
+	gap: 15px;
+	flex-wrap: wrap;
+	margin-bottom: 40px;
+}
+
+.btn-outline {
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	color: white;
+	padding: 12px 24px;
+	border-radius: 50px;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	transition: var(--transition);
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+}
+
+.btn-outline:hover {
+	background: rgba(255, 255, 255, 0.15);
+	border-color: white;
+}
+
+.hero-trophies {
+	display: flex;
+	gap: 15px;
+	align-items: flex-end;
+}
+
+.hero-trophy {
+	height: 80px;
+	width: auto;
+	object-fit: contain;
+	filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+	transition: transform 0.3s ease;
+}
+
+.hero-trophy:hover {
+	transform: translateY(-10px) scale(1.1);
+}
+
+.hero-image-wrapper {
+	flex: 0.8;
+	display: flex;
+	justify-content: flex-end;
+	position: relative;
+}
+
+.hero-portrait {
+	width: 100%;
+	max-width: 500px;
+	filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
+}
+
+/* --- 2. About Preview Section --- */
+.home-about {
+	display: flex;
+	align-items: center;
+	gap: 60px;
+	max-width: 1300px;
+	margin: 100px auto;
+	padding: 0 5%;
+}
+
+.home-about-img {
+	flex: 1;
+	border-radius: 20px;
+	box-shadow: var(--card-shadow);
+	width: 50%;
+}
+
+.home-about-content {
+	flex: 1;
+	text-align: justify;
+}
+
+.year-badge {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 20px;
+	background: var(--glass-bg);
+	border: 1px solid var(--glass-border);
+	border-radius: 16px;
+	margin: 30px 0;
+	box-shadow: var(--card-shadow);
+}
+
+.year-number {
+	font-size: 3.5rem;
+	font-weight: 800;
+	background: linear-gradient(135deg, #0088ff, var(--orange-accent));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	line-height: 1;
+}
+
+.year-text {
+	font-size: 0.95rem;
+	color: var(--text-secondary);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+/* --- 3. Continuous Moving Banner Slider --- */
+.banner-slider-container {
+	width: 100%;
+	height: 500px;
+	position: relative;
+	overflow: hidden;
+	background: var(--bg-secondary);
+	margin: 60px 0;
+}
+
+.banner-slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.banner-slide.active {
+	opacity: 1;
+}
+
+.banner-slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* --- 4. Blue Sections (Services & Videos) --- */
+.blue-section {
+	background: var(--footer-navy, #081C2D);
+	padding: 100px 5%;
+	color: white;
+	position: relative;
+}
+
+.section-header-flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1300px;
+	margin: 0 auto 50px;
+	border-left: 4px solid var(--orange-accent);
+	padding-left: 20px;
+}
+
+.section-header-flex h2 {
+	font-size: 2.5rem;
+	color: inherit;
+}
+
+.grid-3 {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 30px;
+	max-width: 1300px;
+	margin: 0 auto;
+}
+
+/* --- 5. Why Choose Us --- */
+.wcu-section {
+	max-width: 1300px;
+	margin: 100px auto;
+	padding: 0 5%;
+	text-align: center;
+}
+
+.wcu-card {
+	background: linear-gradient(135deg, var(--orange-accent), #e66000);
+	color: white;
+	padding: 40px 20px;
+	border-radius: 20px;
+	text-align: center;
+	transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.wcu-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 20px 40px rgba(255, 107, 0, 0.3);
+}
+
+.wcu-icon {
+	font-size: 3rem;
+	margin-bottom: 20px;
+}
+
+/* --- 6. Generic Card Styling (For Testimonials & Services) --- */
+.home-card {
+	background: var(--glass-bg);
+	border: 1px solid var(--glass-border);
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: var(--card-shadow);
+	transition: var(--transition);
+}
+
+.blue-section .home-card {
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.1);
+}
+
+.home-card:hover {
+	transform: translateY(-10px);
+}
+
+.home-card-img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+
+.home-card-body {
+	padding: 25px;
+}
+
+/* Responsive */
+@media ( max-width : 992px) {
+	.home-hero-container, .home-about {
+		flex-direction: column;
+		text-align: center;
+	}
+	.hero-actions, .hero-trophies {
+		justify-content: center;
+	}
+	.section-header-flex {
+		flex-direction: column;
+		gap: 20px;
+		text-align: center;
+		border-left: none;
+		border-bottom: 4px solid var(--orange-accent);
+		padding-bottom: 20px;
+		padding-left: 0;
+	}
+}
+</style>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+
+	<div id="header"></div>
+	<div id="navbar"></div>
+
+	<main>
+		<!-- 1. HERO SECTION -->
+		<section class="home-hero">
+			<div class="hero-bg-glow"></div>
+			<div class="home-hero-container">
+				<div class="hero-content reveal">
+					<div class="hero-logo-text">
+						<i class="fas fa-chart-line" style="color: var(--orange-accent);"></i>
+						MR. VINOD INDRAPPA DESAI's
+					</div>
+					<h1 class="hero-title">Financial Planner</h1>
+
+					<div class="hero-actions">
+						<a href="tel:+919822847790" class="btn-outline"><i
+							class="fas fa-user"></i> +91 9822847790</a> <a
+							href="tel:+919422435160" class="btn-outline"><i
+							class="fas fa-user"></i> +91 9422435160</a> <a
+							href="/pages/contact.html" class="btn-premium">Book A Free
+							Consultation</a>
+					</div>
+
+					<!-- CSS Trophies representation -->
+					<div class="hero-trophies">
+						<img src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png"
+							class="hero-trophy" alt="Award 1"> <img
+							src="https://cdn-icons-png.flaticon.com/512/3113/3113038.png"
+							class="hero-trophy" alt="Award 2" style="height: 100px;"> <img
+							src="https://cdn-icons-png.flaticon.com/512/3112/3112946.png"
+							class="hero-trophy" alt="Award 3"> <img
+							src="https://cdn-icons-png.flaticon.com/512/10008/10008779.png"
+							class="hero-trophy" alt="Award 4">
+					</div>
+				</div>
+				<div class="hero-image-wrapper reveal">
+					<img src="/assets/images/mahesh-pai.jpeg" alt="Vinod Desai"
+						class="hero-portrait"
+						onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80'">
+				</div>
+			</div>
+		</section>
+
+		<!-- 2. ABOUT US -->
+		<section class="home-about reveal">
+			<img src="assets/images/Kagna.jpg" alt="Award Ceremony"
+				class="home-about-img">
+			<div class="home-about-content">
+				<h2 style="font-size: 2.5rem; margin-bottom: 20px;">About Us</h2>
+				<p style="color: var(--text-secondary); line-height: 1.7;">Mr. Vinod Indrappa Desai is a Finance expert and has an experience of over 23 years in
+					this field. He specializes in retirement planning and goal based
+					Financial planning.</p>
+				<p
+					style="color: var(--text-secondary); line-height: 1.7; margin-top: 15px;">Vinod 
+				Desai is a Galaxy Club Member of LIC of India and having a award in
+					Financial Planning Goa.</p>
+
+				<div class="year-badge">
+					<div class="year-number">23</div>
+					<div class="year-text">
+						Years of excellent service and the trust<br>of customers from
+						all over the world.
+					</div>
+				</div>
+
+				<a href="/pages/about.html" class="btn-premium">Read More <i
+					class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+			</div>
+		</section>
+
+		<!-- 3. CONTINUOUS SLIDING BANNER -->
+		<section class="banner-slider-container reveal">
+			<!-- These slides crossfade automatically using JavaScript -->
+			<div class="banner-slide active">
+				<img
+					src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
+					alt="Banner 1">
+				<h2
+					style="position: absolute; color: white; font-size: 4rem; text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">Vinod Desai's Hub</h2>
+			</div>
+			<div class="banner-slide">
+				<img
+					src="https://images.unsplash.com/photo-1554200876-56c2f25224fa?auto=format&fit=crop&w=2000&q=80"
+					alt="Banner 2">
+				<h2
+					style="position: absolute; color: white; font-size: 4rem; text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">Wealth
+					Architecture</h2>
+			</div>
+			<div class="banner-slide">
+				<img
+					src="https://images.unsplash.com/photo-1579532537598-459ecdaf39cc?auto=format&fit=crop&w=2000&q=80"
+					alt="Banner 3">
+				<h2
+					style="position: absolute; color: white; font-size: 4rem; text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);">Global
+					Standards</h2>
+			</div>
+		</section>
+
+		<!-- 4. OUR SERVICES (BLUE SECTION) -->
+<section class="blue-section reveal">
+    <div class="section-header-flex">
+        <h2>Our Services</h2>
+        <a href="/pages/services.html" class="btn-premium">View All</a>
+    </div>
+
+    <div class="grid-3">
+
+        <!-- Money Back Plans -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600&q=80"
+                 alt="Money Back Plans" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Money Back Plans</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Enjoy periodic payouts while securing your financial future
+                    with life insurance protection as per policy terms.
+                </p>
+                <a href="/pages/services.html#money-back"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Children Plans -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=600&q=80"
+                 alt="Children Plans" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Children Plans</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Plan for your child's higher education, marriage, and
+                    important milestones with financial security.
+                </p>
+                <a href="/pages/services.html#children-plans"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Pension Plans -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80"
+                 alt="Pension Plans" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Pension Plans</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Build your retirement fund and plan for financial
+                    independence during your golden years.
+                </p>
+                <a href="/pages/services.html#pension-plans"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Market Linked Plans -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80"
+                 alt="Market Linked Plans" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Market Linked Plans</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Explore market-linked investment opportunities for
+                    long-term wealth creation and financial goals.
+                </p>
+                <a href="/pages/services.html#market-plans"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Health Insurance -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80"
+                 alt="Health Insurance" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Health Insurance</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Protect your family against eligible medical expenses
+                    and unexpected healthcare emergencies.
+                </p>
+                <a href="/pages/services.html#health-insurance"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Travel Insurance -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80"
+                 alt="Travel Insurance" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Travel Insurance</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Travel with confidence with protection against eligible
+                    medical emergencies and travel-related risks.
+                </p>
+                <a href="/pages/services.html#travel-insurance"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Group Insurance -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=80"
+                 alt="Group Insurance" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Group Insurance</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Provide financial protection to employees and support
+                    a safer and more secure workplace.
+                </p>
+                <a href="/pages/services.html#group-insurance"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Vehicle Insurance -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80"
+                 alt="Vehicle Insurance" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Vehicle Insurance</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Protect your car, bike, or commercial vehicle against
+                    covered accidents, theft, and third-party liabilities.
+                </p>
+                <a href="/pages/services.html#vehicle-insurance"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Fire Insurance -->
+        <div class="home-card">
+            <img src="https://smsgrp.in/assets/img/page/c14d5f637495cfa6e8a6e050b6396540.jpg"
+                 alt="Fire Insurance" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Fire Insurance</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Safeguard your home, business, buildings, and valuable
+                    assets against covered fire-related risks.
+                </p>
+                <a href="/pages/services.html#fire-insurance"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- WC Policy -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80"
+                 alt="Workmen Compensation Policy" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Workmen Compensation Policy</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Protect your business against eligible employee injury
+                    compensation liabilities under applicable laws.
+                </p>
+                <a href="/pages/services.html#wc-policy"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Endowment & Whole Life Plans -->
+        <div class="home-card">
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600&q=80"
+                 alt="Endowment and Whole Life Plans" class="home-card-img">
+            <div class="home-card-body">
+                <h3 style="margin-bottom: 15px;">Endowment & Whole Life Plans</h3>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">
+                    Combine long-term financial planning with life insurance
+                    protection and savings benefits as per policy terms.
+                </p>
+                <a href="/pages/services.html#endowment-whole-life"
+                   style="color: var(--orange-accent); text-decoration: none; font-weight: 600;">
+                    Read More <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+		<!-- 5. CONTINUOUS TRAINING -->
+		<section class="reveal"
+			style="padding: 100px 5%; background: var(--bg-primary);">
+			<div class="section-header-flex" style="border-left-color: #0088ff;">
+				<h2 style="color: var(--text-primary);">Continuous Training</h2>
+				<a href="/pages/events.html#continuous-training" class="btn-premium"
+					style="background: #0088ff;">View More</a>
+			</div>
+			<div class="grid-3">
+				<div class="home-card">
+					<img
+						src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80"
+						alt="Training 1" class="home-card-img" style="height: 250px;">
+				</div>
+				<div class="home-card">
+					<img
+						src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80"
+						alt="Training 2" class="home-card-img" style="height: 250px;">
+				</div>
+				<div class="home-card">
+					<img
+						src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80"
+						alt="Training 3" class="home-card-img" style="height: 250px;">
+				</div>
+				<div class="home-card">
+					<img
+						src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80"
+						alt="Training 1" class="home-card-img" style="height: 250px;">
+				</div>
+				<div class="home-card">
+					<img
+						src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80"
+						alt="Training 2" class="home-card-img" style="height: 250px;">
+				</div>
+				<div class="home-card">
+					<img
+						src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80"
+						alt="Training 3" class="home-card-img" style="height: 250px;">
+				</div>
+			</div>
+		</section>
+
+		<!-- 6. TESTIMONIALS -->
+		<section class="reveal" style="padding: 0 5% 100px;">
+			<div style="text-align: center; margin-bottom: 50px;">
+				<h2 style="font-size: 2.5rem; margin-bottom: 10px;">Testimonials</h2>
+				<p style="color: var(--text-secondary);">What our clients say
+					about us.</p>
+			</div>
+
+			<div class="grid-3">
+				<div class="home-card" style="padding: 30px;">
+					<div
+						style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+						<img
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJKueq1tsHBNK-60iE4zuAMN8scsdu8Uy4ak9C7_S0nQ&s=10"
+							alt="Google" width="30">
+						<div style="color: #F59E0B;">
+							<i class="fas fa-star"></i><i class="fas fa-star"></i><i
+								class="fas fa-star"></i><i class="fas fa-star"></i><i
+								class="fas fa-star"></i>
+						</div>
+					</div>
+					<p
+						style="color: var(--text-secondary); font-style: italic; margin-bottom: 20px;">"Highly
+						professional and transparent. Vinod Desai's strategies secured my
+						family's future beautifully."</p>
+					<h4 style="color: var(--text-primary);">Rahul Desai</h4>
+				</div>
+				<div class="home-card" style="padding: 30px;">
+					<div
+						style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+						<img
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJKueq1tsHBNK-60iE4zuAMN8scsdu8Uy4ak9C7_S0nQ&s=10"
+							alt="Google" width="30">
+						<div style="color: #F59E0B;">
+							<i class="fas fa-star"></i><i class="fas fa-star"></i><i
+								class="fas fa-star"></i><i class="fas fa-star"></i><i
+								class="fas fa-star"></i>
+						</div>
+					</div>
+					<p
+						style="color: var(--text-secondary); font-style: italic; margin-bottom: 20px;">"The
+						best financial consultant in Goa. Their team is extremely
+						knowledgeable about mutual funds."</p>
+					<h4 style="color: var(--text-primary);">Priya K.</h4>
+				</div>
+				<div class="home-card" style="padding: 30px;">
+					<div
+						style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+						<img
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJKueq1tsHBNK-60iE4zuAMN8scsdu8Uy4ak9C7_S0nQ&s=10"
+							alt="Google" width="30">
+						<div style="color: #F59E0B;">
+							<i class="fas fa-star"></i><i class="fas fa-star"></i><i
+								class="fas fa-star"></i><i class="fas fa-star"></i><i
+								class="fas fa-star"></i>
+						</div>
+					</div>
+					<p
+						style="color: var(--text-secondary); font-style: italic; margin-bottom: 20px;">"Helped
+						me structure my business finances and tax planning flawlessly.
+						Highly recommended."</p>
+					<h4 style="color: var(--text-primary);">Amit S.</h4>
+				</div>
+			</div>
+
+			<div style="text-align: center; margin-top: 40px;">
+				<a href="/pages/gallery.html#testimonials" class="btn-premium">View
+					All Testimonials</a>
+			</div>
+		</section>
+
+		<!-- 7. WHY CHOOSE US -->
+		<section class="wcu-section reveal">
+			<h2 style="font-size: 2.5rem; margin-bottom: 50px;">Why Choose
+				Us?</h2>
+			<div class="grid-3">
+				<div class="wcu-card">
+					<i class="fas fa-certificate wcu-icon"></i>
+					<h3 style="margin-bottom: 10px;">ISO Certified</h3>
+					<p style="opacity: 0.9; font-size: 0.95rem;">9001:2015
+						Certified Company</p>
+				</div>
+				<div class="wcu-card">
+					<i class="fas fa-users wcu-icon"></i>
+					<h3 style="margin-bottom: 10px;">100% Satisfaction</h3>
+					<p style="opacity: 0.9; font-size: 0.95rem;">Client
+						Satisfaction Guarantee</p>
+				</div>
+				<div class="wcu-card">
+					<i class="fas fa-handshake wcu-icon"></i>
+					<h3 style="margin-bottom: 10px;">Trusted Advisory</h3>
+					<p style="opacity: 0.9; font-size: 0.95rem;">Dealing With
+						HNI's, Professionals, & Entrepreneurs</p>
+				</div>
+			</div>
+		</section>
+
+
+
+		<!-- 9. GALLERY BOTTOM -->
+		<section class="reveal" style="padding: 100px 5%;">
+			<div style="text-align: center; margin-bottom: 50px;">
+				<h2 style="font-size: 2.5rem; margin-bottom: 10px;">Recent
+					Events</h2>
+			</div>
+
+			<div
+				style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; max-width: 1300px; margin: 0 auto 40px;">
+				<img
+					src="/assets/images/1.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"> <img
+					src="/assets/images/2.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"> <img
+					src="/assets/images/3.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"> <img
+					src="/assets/images/4.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"> <img
+					src="/assets/images/5.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"> <img
+					src="/assets/images/6.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/7.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/8.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/10.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/11.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/12.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/13.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/14.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/15.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/16.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/17.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/18.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/19.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/20.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/21.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/22.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/23.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/24.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/17.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/25.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/26.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/27.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/28.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;"><img
+					src="/assets/images/29.jpeg"
+					class="home-card"
+					style="width: 100%; aspect-ratio: 1; object-fit: cover;">
+			</div>
+
+			<div style="text-align: center;">
+				<a href="/pages/gallery.html#photos" class="btn-premium">Browse
+					More Photos</a>
+			</div>
+		</section>
+
+	</main>
+
+	<div id="footer"></div>
+
+	<script src="/assets/js/common.js"></script>
+	<script src="/assets/js/main.js"></script>
+
+	<!-- Automatic Continuous Slider Logic -->
+	<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const slides = document.querySelectorAll('.banner-slide');
+            let currentSlide = 0;
+
+            if (slides.length > 0) {
+                // Change slide every 4 seconds
+                setInterval(() => {
+                    // Remove active class from current
+                    slides[currentSlide].classList.remove('active');
+                    
+                    // Move to next slide, loop back to 0 if at the end
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    
+                    // Add active class to new slide
+                    slides[currentSlide].classList.add('active');
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+</html>

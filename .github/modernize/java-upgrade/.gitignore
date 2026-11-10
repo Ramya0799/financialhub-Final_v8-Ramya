@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secret.properties
+**/target/
+*.log

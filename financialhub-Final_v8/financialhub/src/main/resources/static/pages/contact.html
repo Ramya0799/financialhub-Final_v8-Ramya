@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <script src="/assets/js/theme.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Vinod Desai Financial Planner</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+    
+    <!-- Component Placeholders -->
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+    <main class="contact-page-wrapper">
+        <div class="contact-header reveal">
+            <h1 class="display-title">Schedule Your <span class="gradient-text">Consultation</span></h1>
+            <p class="subtitle">Secure your financial future with bespoke wealth management strategies.</p>
+        </div>
+
+        <div class="contact-grid">
+            
+            <!-- LEFT PANEL: CONTACT INFO -->
+            <div class="glass-panel contact-info reveal">
+                <h2 class="panel-heading">Get In Touch</h2>
+                <p class="panel-subtitle">Our advisors are available to help you plan your financial future.</p>
+
+                <div class="info-block">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-text">
+                        <h4>Office</h4>
+                        <p>Vinod Desai's Financial Planner<br>OFFICE NO 111 1ST FLOOR, SUPREME BOMBI PLAZA COMBA STREET NO. COMBA, <br>MARGAO 403601 LANDMARK NR LIC OFFICE</p>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p>vinoddessai@yahoo.com</p>
+                    </div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-text">
+                        <h4>Business Hours</h4>
+                        <p>Monday – Saturday: 10:00 AM – 5:00 PM<br>Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <!-- Team Directory -->
+            
+
+                <div class="social-links contact-socials">
+                    <a href="https://www.facebook.com/vinod.desai.5203/" class="social-icon" data-tooltip="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/vinoddesai26" class="social-icon" data-tooltip="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@vinoddesai-x7l" class="social-icon" data-tooltip="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/919822847790" class="social-icon" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- RIGHT PANEL: CONSULTATION FORM -->
+            <div class="glass-panel contact-form-wrapper reveal" style="transition-delay: 0.2s;">
+                <h2 class="panel-heading">Book Appointment</h2>
+                <p class="panel-subtitle">Fill in your details and our financial advisors will contact you shortly.</p>
+
+                <!-- Status Alert -->
+                <div id="form-alert" class="premium-alert" style="display: none;">
+                    <i class="fas fa-check-circle alert-icon"></i>
+                    <span class="alert-message"></span>
+                </div>
+
+                <form id="consultationForm" class="premium-form">
+                    <div class="form-row">
+                        <div class="input-group">
+                            <i class="fas fa-user input-icon"></i>
+                            <!-- The placeholder=" " is required for the CSS floating label trick -->
+                            <input type="text" id="name" class="form-control" placeholder=" " autocomplete="name" required>
+                            <label class="floating-label">Full Name *</label>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" id="email" class="form-control" placeholder=" " autocomplete="email" required>
+                            <label class="floating-label">Email Address *</label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <i class="fas fa-phone input-icon"></i>
+                            <input type="tel" id="phone" class="form-control" placeholder=" " autocomplete="tel" required>
+                            <label class="floating-label">Mobile Number *</label>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-briefcase input-icon"></i>
+                            <select id="service" class="form-control select-control" required>
+                                <option value="" disabled selected hidden>Select Service</option>
+                              <option value="Money Back Plans">Money Back Plans</option>
+<option value="Children Plans">Children Plans</option>
+<option value="Pension Plans">Pension Plans</option>
+<option value="Market Plans">Market Linked Plans</option>
+<option value="Term Plans">Term Plans</option>
+<option value="Health Insurance">Health Insurance</option>
+<option value="Travel Insurance">Travel Insurance</option>
+<option value="Group Insurance">Group Insurance</option>
+<option value="Vehicle Insurance">Vehicle Insurance</option>
+<option value="Fire Insurance">Fire Insurance</option>
+<option value="Workmen Compensation (WC) Policy">Workmen Compensation (WC) Policy</option>
+<option value="Endowment & Whole Life Plans">Endowment & Whole Life Plans</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Consultation Mode (Radio Buttons) -->
+                    <div class="input-group radio-group-wrapper">
+                        <label class="static-label">Preferred Consultation Mode</label>
+                        <div class="radio-group">
+                            <label class="custom-radio">
+                                <input type="radio" name="mode" value="Phone Call" checked>
+                                <span class="radio-btn"><i class="fas fa-phone-alt"></i> Phone</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="mode" value="Video Meeting">
+                                <span class="radio-btn"><i class="fas fa-video"></i> Video</span>
+                            </label>
+                            <label class="custom-radio">
+                                <input type="radio" name="mode" value="Office Visit">
+                                <span class="radio-btn"><i class="fas fa-building"></i> Office</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <i class="fas fa-calendar-alt input-icon"></i>
+                            <input type="date" id="date" class="form-control has-value" required>
+                            <label class="static-label date-label">Preferred Date</label>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-clock input-icon"></i>
+                            <input type="time" id="time" class="form-control has-value" required>
+                            <label class="static-label date-label">Preferred Time</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group textarea-group">
+                        <i class="fas fa-comment-alt input-icon textarea-icon"></i>
+                        <textarea id="message" class="form-control" rows="4" placeholder=" " required></textarea>
+                        <label class="floating-label">Tell us about your financial goals...</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            <span class="check-text">I agree to be contacted by Vinod Desai's Financial Planner.</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-premium btn-submit ripple-effect" id="submitBtn">
+                        <span class="btn-text">Book Free Consultation</span>
+                        <div class="loader" style="display: none;"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer"></div>
+
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/contact.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,81 @@
+
+
+
+    
+    
+
+    
+    
+
+    <style>
+        .top-bar-container {
+            background: #ffffff;
+            color: #374151;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-left,
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar-container a {
+            color: #374151;
+            text-decoration: none;
+        }
+
+        .top-bar-container a:hover,
+        .top-bar-container a:focus-visible {
+            color: #c2410c;
+        }
+
+        .top-bar-container .admin-link {
+            color: #9a3412;
+            border-left: 1px solid #d1d5db;
+            padding-left: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+
+
+    <div class="top-bar-container">
+        <div class="top-bar-left">
+            <span>
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                OFFICE NO 111 1ST FLOOR, SUPREME BOMBI PLAZA COMBA STREET NO. COMBA, 
+                MARGAO 403601 LANDMARK NR LIC OFFICE
+            </span>
+            <span>
+                <i class="fas fa-headset" aria-hidden="true"></i>
+                Help Desk +91 9822847790
+            </span>
+        </div>
+
+        <div class="top-bar-right">
+<a href="https://www.facebook.com/vinod.desai.5203" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+<a href="https://www.instagram.com/vinoddesai26" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+<a href="https://www.youtube.com/@vinoddesai-x7l" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+
+       
+            <a href="/admin/login.html" class="admin-link" title="Admin Access" aria-label="Admin Access">
+                <i class="fas fa-lock" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+
+

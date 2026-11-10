@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <script src="/assets/js/theme.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Services | Vinod Desai's Financial Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        /* ==========================================================================
+           PREMIUM SERVICES PAGE STYLES
+           ========================================================================== */
+        
+        .services-wrapper { overflow: hidden; position: relative; padding-bottom: 100px; }
+        
+        /* Floating Background Elements */
+        .bg-shape { position: absolute; border-radius: 50%; filter: blur(120px); z-index: -1; opacity: 0.3; animation: float 20s infinite alternate; }
+        .shape-1 { top: 10%; left: -10%; width: 500px; height: 500px; background: var(--orange-accent, #FF6B00); }
+        .shape-2 { top: 50%; right: -10%; width: 600px; height: 600px; background: #0088ff; animation-delay: -5s; }
+        .shape-3 { bottom: 10%; left: 20%; width: 400px; height: 400px; background: #764ba2; animation-delay: -10s; }
+
+        /* Alternating Sections Structure */
+        .service-section { display: flex; align-items: center; gap: 80px; max-width: 1400px; margin: 0 auto 120px; padding: 0 5%; }
+        .service-section.reverse { flex-direction: row-reverse; }
+        .service-content { flex: 1.1; }
+        .service-image-wrapper { flex: 0.9; position: relative; border-radius: 24px; overflow: hidden; box-shadow: var(--card-shadow); }
+        .service-image-wrapper img { width: 100%; height: auto; display: block; transition: transform 0.7s ease; object-fit: cover; aspect-ratio: 4/3; }
+        .service-image-wrapper:hover img { transform: scale(1.05); }
+        
+        /* Premium Service Headings */
+        .service-title { font-size: 2.5rem; margin-bottom: 25px; line-height: 1.2; border-left: 5px solid var(--orange-accent, #FF6B00); padding-left: 20px; color: var(--text-primary); }
+        
+        /* Text Styling */
+        .service-text { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
+        
+        /* Action Button */
+        .action-container { margin-top: 35px; }
+        .btn-consult { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, var(--orange-accent, #FF6B00), #e66000); color: white; padding: 14px 28px; border-radius: 12px; font-weight: 600; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2); }
+        .btn-consult:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 107, 0, 0.4); color: white; }
+
+        /* Feature Lists */
+        .feature-list { list-style: none; padding: 0; margin: 25px 0; }
+        .feature-list li { display: flex; gap: 12px; margin-bottom: 12px; color: var(--text-secondary); font-size: 1.05rem; }
+        .feature-list i { color: var(--orange-accent, #FF6B00); margin-top: 4px; font-size: 1.1rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-section, .service-section.reverse { flex-direction: column; gap: 50px; text-align: left; }
+            .service-image-wrapper { width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .service-title { font-size: 2rem; }
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+    <main class="services-wrapper">
+        <!-- Floating Background Blobs -->
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+
+        <section class="page-hero reveal">
+            <h1>Premium <span class="gradient-text">Services</span></h1>
+        </section>
+
+        <div style="margin-top: 100px;">
+            
+            <!-- 1. MONEY BACK PLANS -->
+<section id="money-back" class="service-section reveal">
+    <div class="service-content">
+        <h2 class="service-title">Money Back Plans</h2>
+
+        <h4 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">
+            Enjoy Life Today While Securing Your Financial Future.
+        </h4>
+
+        <p class="service-text">
+            Money Back Plans are designed to provide financial protection
+            along with periodic payouts during the policy term. These plans
+            help you meet important financial goals such as your children's
+            education, family expenses, dream purchases, and future needs.
+            Receive money at regular intervals while maintaining life
+            insurance protection as per the policy terms. Some plans may
+            also offer a maturity benefit at the end of the policy term.
+            Choose a plan that matches your financial goals and enjoy
+            greater financial confidence. Start planning today for a
+            financially secure tomorrow!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800"
+             alt="Money Back Plans and Financial Planning">
+    </div>
+</section>
+
+            <!-- 2. CHILDREN PLANS -->
+<section id="children-plans" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Children Plans</h2>
+
+        <h4 style="color: var(--text-primary); margin-bottom: 15px; font-size: 1.3rem;">
+            Secure Your Child's Dreams, Education & Future.
+        </h4>
+
+        <p class="service-text">
+            Every parent dreams of providing the best future for their children.
+            Whether it is higher education, professional studies, marriage, or
+            fulfilling their dreams, proper financial planning today can make
+            a significant difference tomorrow. Rising education costs make
+            early financial planning more important than ever.
+        </p>
+
+        <p class="service-text">
+            Children Plans help parents build a financial foundation for
+            important milestones in their child's life. Depending on the
+            selected plan, you may receive savings benefits, maturity benefits,
+            life insurance protection, and other benefits as per policy terms.
+            Start investing in your child's future today and give them the
+            financial support to achieve their dreams!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=800&q=80"
+             alt="Children Financial Planning and Education">
+    </div>
+</section>
+
+
+            <!-- 4. PENSION PLANS -->
+<section id="pension-plans" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Pension Plans</h2>
+
+        <p class="service-text">
+            Retirement should be a time to enjoy life without worrying about
+            financial security. Pension Plans help you build a retirement fund
+            during your earning years and create a regular income stream after
+            retirement, depending on the selected plan. Start planning early
+            to maintain your lifestyle, manage everyday expenses, and achieve
+            financial independence in your golden years. Choose a suitable
+            pension plan based on your retirement goals, financial needs, and
+            risk appetite. Secure your future today and enjoy a financially
+            confident retirement!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&q=80"
+             alt="Pension Plans and Retirement Planning">
+    </div>
+</section>
+
+            
+
+          <!-- 4. MARKET LINKED PLANS -->
+<section id="market-plans" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Market Linked Plans</h2>
+
+        <p class="service-text">
+            Want to grow your wealth while planning for your financial future?
+            Market Linked Plans offer an opportunity to participate in market-linked
+            investments through professionally managed funds. These plans can help
+            you achieve long-term financial goals such as wealth creation, children's
+            education, retirement planning, and financial independence. Depending
+            on the selected plan, you may also receive life insurance protection
+            along with investment benefits. Choose from available fund options
+            according to your financial goals, investment horizon, and risk appetite.
+            Start your wealth creation journey today and take a step towards a
+            financially secure future!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80"
+             alt="Market Linked Investment Plans">
+    </div>
+</section>
+
+
+         <!-- 4. HEALTH INSURANCE -->
+<section id="health-insurance" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Health Insurance</h2>
+
+        <p class="service-text">
+            Your health is your greatest wealth, and protecting it should be
+            your top priority. Unexpected medical emergencies, accidents, and
+            critical illnesses can create a significant financial burden on
+            you and your family. Health Insurance provides financial protection
+            against eligible hospitalization and medical treatment expenses,
+            helping you access quality healthcare without exhausting your
+            lifetime savings. Choose a suitable health insurance plan with
+            coverage options that match your family's needs and budget.
+            Protect your family's health and secure your financial future
+            with the right health insurance coverage. Your health deserves
+            the best protection!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
+             alt="Health Insurance and Medical Protection">
+    </div>
+</section>
+
+
+           <!-- 4. TRAVEL INSURANCE -->
+<section id="travel-insurance" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Travel Insurance</h2>
+
+        <p class="service-text">
+            Travel with confidence and enjoy every journey without unnecessary
+            financial worries. Unexpected medical emergencies, flight delays,
+            baggage loss, passport loss, and trip cancellations can disrupt
+            your travel plans and create unexpected expenses. Travel Insurance
+            provides financial protection against eligible travel-related
+            risks, whether you are travelling within India or exploring
+            international destinations. Choose a suitable travel insurance
+            plan that offers coverage according to your destination, travel
+            duration, and personal requirements. Protect yourself and your
+            loved ones while travelling. Plan smart, travel safely, and
+            explore the world with peace of mind!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80"
+             alt="Travel Insurance and Worldwide Travel Protection">
+    </div>
+</section>
+
+
+
+          <!-- 4. GROUP INSURANCE -->
+<section id="group-insurance" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Group Insurance</h2>
+
+        <p class="service-text">
+            Protect your employees, strengthen your organisation, and build
+            a secure workplace with Group Insurance. Employees are the
+            backbone of every successful business, and providing financial
+            protection for them is an important step towards their well-being.
+            Group Insurance offers coverage options for employees and their
+            families, including group health insurance, life insurance, and
+            personal accident coverage, depending on the selected policy.
+            It helps businesses provide financial security, improve employee
+            satisfaction, and build trust within the organisation. Whether
+            you run a small business or a large company, choose a suitable
+            group insurance solution to protect your valuable workforce.
+            Take care of your employees and build a stronger future together!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=800&q=80"
+             alt="Group Insurance and Employee Protection">
+    </div>
+</section>
+
+       
+
+<!-- 4. VEHICLE INSURANCE -->
+<section id="vehicle-insurance" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Vehicle Insurance</h2>
+
+        <p class="service-text">
+            Your vehicle is an important part of your daily life, and protecting
+            it against unexpected risks is essential. Accidents, theft, natural
+            disasters, and third-party liabilities can lead to significant
+            financial losses. Vehicle Insurance provides financial protection
+            against covered damages and liabilities, helping you drive with
+            greater confidence and peace of mind. Whether you own a car,
+            motorcycle, or commercial vehicle, choose a suitable insurance
+            policy that matches your requirements and budget. Explore
+            comprehensive and third-party insurance options to protect your
+            vehicle and meet applicable legal requirements. Renew your policy
+            on time and enjoy worry-free journeys!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=800&q=80"
+             alt="Vehicle Insurance and Car Protection">
+    </div>
+</section>
+
+
+<!-- 4. FIRE INSURANCE -->
+<section id="fire-insurance" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Fire Insurance</h2>
+
+        <p class="service-text">
+            Your home, business, factory, and valuable assets represent years
+            of hard work and investment. Unexpected fire accidents, explosions,
+            lightning, and other covered risks can cause devastating financial
+            losses. Fire Insurance provides financial protection against
+            eligible damage to buildings, machinery, furniture, stock, and
+            other insured property. Whether you own a residential property,
+            commercial establishment, warehouse, or industrial unit, choosing
+            the right fire insurance policy can help protect your assets and
+            support financial recovery after an unfortunate incident.
+            Safeguard your property, protect your business, and secure
+            everything you have worked hard to build!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+<div class="service-image-wrapper glass">
+    <img src="https://smsgrp.in/assets/img/page/c14d5f637495cfa6e8a6e050b6396540.jpg"
+         alt="Fire Insurance and Property Protection"
+         loading="lazy"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+</div>
+</section>
+
+
+
+<!-- 4. WORKMEN COMPENSATION POLICY -->
+<section id="wc-policy" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Workmen Compensation (WC) Policy</h2>
+
+        <p class="service-text">
+            Employees are the backbone of every successful business, and
+            protecting their safety and well-being is an important
+            responsibility. Workplace accidents, occupational injuries, and
+            unforeseen incidents can create financial and legal challenges
+            for employers. Workmen Compensation Insurance provides coverage
+            for eligible compensation liabilities arising from employment-related
+            injuries, disabilities, or death, as per applicable laws and policy
+            terms. This policy helps businesses manage financial risks while
+            ensuring support for employees and their families during difficult
+            situations. Whether you operate a factory, construction company,
+            manufacturing unit, or commercial establishment, choose suitable
+            WC coverage to protect your workforce and business interests.
+            Protect your employees and build a responsible workplace!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80"
+             alt="Workmen Compensation and Employee Safety Insurance">
+    </div>
+</section>
+
+
+<!-- 4. ENDOWMENT & WHOLE LIFE PLANS -->
+<section id="endowment-whole-life" class="service-section reverse reveal">
+    <div class="service-content">
+        <h2 class="service-title">Endowment & Whole Life Plans</h2>
+
+        <p class="service-text">
+            Build a financially secure future for yourself and your loved
+            ones with Endowment and Whole Life Insurance Plans. Endowment
+            Plans combine life insurance protection with a savings component,
+            helping you plan for important financial goals such as children's
+            education, marriage, and future expenses. Whole Life Plans are
+            designed to provide life insurance protection for an extended
+            period, potentially up to the insured person's lifetime, depending
+            on the policy. These plans can help you create long-term financial
+            security, protect your family's interests, and build financial
+            discipline. Choose a suitable plan according to your financial
+            goals, budget, and protection requirements. Secure your family's
+            future and plan confidently today!
+        </p>
+
+        <div class="action-container">
+            <a href="/pages/contact.html" class="btn-consult">
+                <i class="fas fa-envelope"></i> FREE CONSULTATION
+            </a>
+        </div>
+    </div>
+
+    <div class="service-image-wrapper glass">
+        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=800&q=80"
+             alt="Endowment and Whole Life Insurance Plans">
+    </div>
+</section>
+            
+
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>

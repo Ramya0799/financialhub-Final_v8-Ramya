@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <script src="/assets/js/theme.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & Articles | Vinod Desai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .gallery-section { max-width: 1400px; margin: 0 auto 100px; padding: 0 5%; }
+        .section-header { margin-bottom: 40px; border-left: 4px solid var(--orange-accent, #FF6B00); padding-left: 20px; }
+        .section-header h2 { font-size: 2.5rem; color: var(--text-primary); }
+    </style>
+    <link rel="stylesheet" href="/assets/css/theme.css">
+</head>
+<body>
+
+    <div id="header"></div>
+    <div id="navbar"></div>
+
+<main>
+        <section class="page-hero reveal">
+            <h1>Market <span class="gradient-text">Insights</span></h1>
+        </section>
+
+        <div style="margin-top: 80px;">
+            <!-- Target: Articles -->
+            <section id="articles" class="gallery-section reveal">
+                <div class="section-header">
+                    <h2>Published Articles</h2>
+                </div>
+                <div class="content-grid" id="articles-container" style="padding: 0; margin: 0;"></div>
+            </section>
+
+            <div class="section-divider reveal"><span></span><span></span></div>
+
+            <!-- Target: Blogs -->
+            <section id="blogs" class="gallery-section reveal">
+                <div class="section-header">
+                    <h2>Latest Blogs</h2>
+                </div>
+                
+                <div class="content-grid" id="blogs-container" style="padding: 0; margin-bottom: 40px;"></div>
+
+                <!-- Pagination Container -->
+                <div class="pagination reveal" id="pagination-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <div id="footer"></div>
+
+<!-- Core Scripts -->
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/main.js"></script>
+    
+    <!-- Dynamic Fetch & Pagination Script -->
+    <script>
+        document.addEventListener("componentsLoaded", () => {
+            fetch('/admin/api/blogs') 
+                .then(response => response.json())
+                .then(data => {
+                    // 1. Separate data by Admin Folders
+                    const articles = data.filter(item => item.category === 'Articles');
+                    const blogs = data.filter(item => item.category === 'Blogs' || !item.category);
+
+                    // 2. Render Articles (No pagination, just show all)
+                    const articlesContainer = document.getElementById('articles-container');
+                    articlesContainer.innerHTML = '';
+                    if (articles.length === 0) {
+                        articlesContainer.innerHTML = '<p style="text-align:center; width:100%; color:var(--text-secondary);">No articles published yet.</p>';
+                    } else {
+                        articles.forEach(item => {
+                            articlesContainer.innerHTML += generateCardHTML(item, 'blog-details.html');
+                        });
+                    }
+
+                    // 3. Render Blogs WITH Pagination
+                    initPagination(blogs, 'blogs-container', 'pagination-container', 6); // 6 blogs per page
+                })
+                .catch(error => {
+                    console.error("Error fetching insights:", error);
+                    document.getElementById('blogs-container').innerHTML = '<p style="text-align:center; width:100%;">Error loading content.</p>';
+                });
+        });
+
+        // --- Reusable HTML Card Generator ---
+        function generateCardHTML(item, targetPage) {
+            const tmp = document.createElement("DIV");
+            tmp.innerHTML = item.content || '';
+            const excerpt = tmp.textContent.substring(0, 110) + "...";
+            const imgUrl = item.imageUrl || "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80";
+            
+            // Note: The Read More link dynamically passes the ID in the URL
+            return `
+                <div class="content-card reveal active">
+                    <div class="card-img-wrapper">
+                        <img src="${imgUrl}" alt="${item.title}">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-excerpt">${excerpt}</p>
+                        <a href="/pages/${targetPage}?id=${item.id}" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- Frontend Pagination Logic ---
+        function initPagination(items, containerId, paginationId, itemsPerPage) {
+            const container = document.getElementById(containerId);
+            const pagContainer = document.getElementById(paginationId);
+            let currentPage = 1;
+            const totalPages = Math.ceil(items.length / itemsPerPage);
+
+            if (items.length === 0) {
+                container.innerHTML = '<p style="text-align:center; width:100%; color:var(--text-secondary);">No blogs available.</p>';
+                pagContainer.innerHTML = '';
+                return;
+            }
+
+            function renderPage(page) {
+                container.innerHTML = '';
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                const pageItems = items.slice(start, end);
+
+                pageItems.forEach(item => {
+                    container.innerHTML += generateCardHTML(item, 'blog-details.html');
+                });
+                renderPaginationButtons(page);
+            }
+
+            function renderPaginationButtons(page) {
+                pagContainer.innerHTML = '';
+                
+                // Previous Button
+                if (page > 1) {
+                    pagContainer.innerHTML += `<div class="page-item" onclick="changePage(${page - 1})"><i class="fas fa-chevron-left"></i></div>`;
+                }
+
+                // Page Numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    if (i === 1 || i === totalPages || (i >= page - 1 && i <= page + 1)) {
+                        const activeClass = i === page ? 'active' : '';
+                        pagContainer.innerHTML += `<div class="page-item ${activeClass}" onclick="changePage(${i})">${i}</div>`;
+                    } else if (i === page - 2 || i === page + 2) {
+                        pagContainer.innerHTML += `<div class="page-item dots">...</div>`;
+                    }
+                }
+
+                // Next Button
+                if (page < totalPages) {
+                    pagContainer.innerHTML += `<div class="page-item" onclick="changePage(${page + 1})"><i class="fas fa-chevron-right"></i></div>`;
+                }
+            }
+
+            // Expose function globally for the onclick attributes
+            window.changePage = function(page) {
+                currentPage = page;
+                renderPage(currentPage);
+                // Scroll smoothly back to top of the section
+                document.getElementById(containerId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            // Initial Render
+            renderPage(currentPage);
+        }
+    </script>
+</body>
+</html>
